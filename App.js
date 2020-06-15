@@ -1,10 +1,13 @@
 import React from 'react';
+import axios from 'axios';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
+   const apiUrl = 'http://www.omdbapi.com/?apikey=23998f3b';
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>Turn up</Text>
     </View>
   );
 }
