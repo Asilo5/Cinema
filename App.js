@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
    const apiUrl = 'https://api.themoviedb.org/3/movie/550?api_key=2adea2e47475ecbf6312f332fc8e9ee2';
+   const [state, setState] = useState({
+     s: 'Enter a movie...',
+     results: [],
+     selected: {}
+   });
 
   return (
     <View style={styles.container}>
