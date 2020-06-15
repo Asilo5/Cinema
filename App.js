@@ -12,7 +12,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Turn up</Text>
+      <Text style={styles.title}>Cinema</Text>
     </View>
   );
 }
@@ -20,8 +20,15 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#202030',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
+  title: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 32,
+    textAlign: 'center',
+    marginTop: 40
+  }
 });
