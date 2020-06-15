@@ -1,10 +1,13 @@
 import React from 'react';
+import axios from 'axios';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
+   const apiUrl = 'https://api.themoviedb.org/3/movie/550?api_key=2adea2e47475ecbf6312f332fc8e9ee2';
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>Turn up</Text>
     </View>
   );
 }
