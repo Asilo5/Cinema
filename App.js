@@ -12,8 +12,8 @@ export default function App() {
 
    const search = () => {
      axios(apiUrl + '&query=' + state.searchedMovie).then(({ data }) => {
-       console.log(data);
-      let results = data;
+       let results = data;
+       console.log(results.original_title);
 
       setState(prevState => {
         return {...prevState, results: results}
