@@ -1,25 +1,24 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { StyleSheet, Text, View, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TextInput, ScrollView, Image } from 'react-native';
 
 export default function App() {
-   const apiUrl = 'https://api.themoviedb.org/3/movie/550?api_key=2adea2e47475ecbf6312f332fc8e9ee2';
+   const apiUrl = 'https://api.themoviedb.org/3/movie/now_playing?api_key=2adea2e47475ecbf6312f332fc8e9ee2';
+   const searchUrl = 'https://api.themoviedb.org/3/search/movie?api_key=2adea2e47475ecbf6312f332fc8e9ee2'
    const [state, setState] = useState({
      searchedMovie: 'Enter a movie...',
-     results: [],
+     movies: [],
      selected: {}
    });
 
    const search = () => {
-     axios(apiUrl + '&query=' + state.searchedMovie).then(({ data }) => {
-       let results = data;
-       console.log(results.original_title);
-
-      setState(prevState => {
-        return {...prevState, results: results}
-      })
+     axios(searchUrl + '&query=' + state.searchedMovie).then(({ data }) => {
+  
+      setState({ movies: data.results })
      });
    };
+
+   console.log('Consoled results....', state.movies)
 
   return (
     <View style={styles.container}>
@@ -33,7 +32,15 @@ export default function App() {
          onSubmitEditing={search}
       />
       <ScrollView style={styles.results}>
-
+          {state.movies.map((result) => (
+            <View key={result.imdb_id} style={styles.result}>
+                <Text style={styles.heading}>{result.original_title}</Text>
+                <Image 
+                   source={{ uri: `https://image.tmdb.org/t/p/original${result.poster_path}` }}
+                   style={styles.movieImages}
+                />
+            </View>
+          ))}
       </ScrollView>
     </View>
   );
@@ -73,6 +80,13 @@ const styles = StyleSheet.create({
   heading: {
     color: 'white',
     fontSize: 18,
-    fontWeight: '700'
-  } 
+    fontWeight: '700',
+    padding: 20,
+    backgroundColor: '#445565',
+    marginBottom: 20
+  },
+  movieImages: {
+    width: 300,
+    height: 300
+  }
 });
