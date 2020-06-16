@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { StyleSheet, Text, View, TextInput  } from 'react-native';
+import { StyleSheet, Text, View, TextInput, ScrollView } from 'react-native';
 
 export default function App() {
    const apiUrl = 'https://api.themoviedb.org/3/movie/550?api_key=2adea2e47475ecbf6312f332fc8e9ee2';
@@ -32,6 +32,9 @@ export default function App() {
          })}
          onSubmitEditing={search}
       />
+      <ScrollView style={styles.results}>
+
+      </ScrollView>
     </View>
   );
 }
@@ -59,5 +62,17 @@ const styles = StyleSheet.create({
     width: '100%',
     borderRadius: 8,
     marginBottom: 40
+  },
+  results: {
+    flex: 1
+  },
+  result: {
+    flex: 1,
+    width: '100%'
+  },
+  heading: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: '700'
   } 
 });
